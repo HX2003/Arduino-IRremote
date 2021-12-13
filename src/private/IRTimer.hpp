@@ -214,6 +214,12 @@
 #elif defined(__AVR_ATtiny1616__)  || defined(__AVR_ATtiny3216__) || defined(__AVR_ATtiny3217__) // TinyCore boards
 #define IR_USE_AVR_TIMER_D
 
+/***************************************
+ * CPU's with MegaTinyCore
+ ***************************************/
+#elif defined(__AVR_ATtiny214__) || defined(__AVR_ATtiny414__) || defined(__AVR_ATtiny814__) || defined(__AVR_ATtiny1614__)
+#define IR_USE_AVR_TIMER_D
+
 #endif // AVR CPU's
 /**********************************************************************************************************************
  * End of AVR mapping, start of AVR timers

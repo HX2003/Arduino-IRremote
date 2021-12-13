@@ -381,6 +381,14 @@
 #define __digitalPinToBit(P) ( (P) <= 3 ? (3 - P) : ((P) <= 5 ? (P) : ((P) <= 9 ? (P - 6) : ((P) <= 16 ? ((P) - 9) : ((P) <= 18 ? ((P) - 11) : ((P) - 15))))) )
 
 
+// MegaTinyCore
+#elif  defined(__AVR_ATtiny214__) || defined(__AVR_ATtiny414__) || defined(__AVR_ATtiny814__) || defined(__AVR_ATtiny1614__)
+#define __digitalPinToPortReg(P) ((P) <= 3 ? &VPORTA.OUT : ((P) <= 7 ? &VPORTB.OUT : (&VPORTA.OUT)))
+#define __digitalPinToDDRReg(P) ((P) <= 3 ? &VPORTA.DIR : ((P) <= 7 ? &VPORTB.DIR : (&VPORTA.DIR)))
+#define __digitalPinToPINReg(P) ((P) <= 3 ? &VPORTA.IN : ((P) <= 7 ? &VPORTB.IN : (&VPORTA.IN)))
+#define __digitalPinToBit(P) ( (P) <= 3 ? (P + 4) : ((P) <= 7 ? (7 - (P)) : ((P) - 7)))
+ 
+ 
 // --- ATtinyX5 ---
 #elif defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
 // we have only PORTB
